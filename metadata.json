@@ -1,0 +1,6 @@
+{
+  "name": "Gerador Planetário de Marte — Escala Monumental",
+  "description": "Simulador topográfico procedural de Marte em PlayCanvas com arquitetura modular (systems, world/terrain, world/sky, world/player), 144 chunks e escala monumental.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
