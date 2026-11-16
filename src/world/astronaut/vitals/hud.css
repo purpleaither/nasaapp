@@ -1,0 +1,42 @@
+/* ASTRONAUTA — barras, avisos e efeitos visuais adaptados de oh-mars/src/style.css. */
+.astronaut-hud { pointer-events: none; color: white; font-family: sans-serif; }
+.astronaut-vitals {
+  position: fixed; bottom: 72px; right: 16px; z-index: 25;
+  width: min(224px, 48vw); padding: 12px 14px; box-sizing: border-box;
+  display: flex; flex-direction: column; gap: 8px;
+  background: rgba(15,15,15,.78); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 8px; pointer-events: auto;
+}
+@media (min-width: 1024px) { .astronaut-vitals { top: 16px; bottom: auto; } }
+.astronaut-vitals-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; }
+.astronaut-vitals-heading h2 { font-weight: 600; }
+.astronaut-vitals-heading span { font-size: 10px; color: #c5c5c5; }
+.astronaut-hud .vital-row { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.85); }
+.astronaut-hud .vital-emoji { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
+.astronaut-hud .vital-track { flex: 1; min-width: 0; height: 5px; background: rgba(255,255,255,.15); border-radius: 3px; overflow: hidden; }
+.astronaut-hud .vital-fill { height: 100%; background: white; border-radius: 3px; transition: width .2s linear; }
+.astronaut-hud .vital-pct { font-family: monospace; font-size: 12px; min-width: 32px; text-align: right; }
+.astronaut-hud .low-warning { animation: astronaut-vital-text .8s infinite alternate ease-in-out; }
+.astronaut-hud .low-warning .vital-fill { animation: astronaut-vital-bar .8s infinite alternate ease-in-out; }
+.astronaut-vital-state { font-size: 10px; color: #d5d5d5; }
+.astronaut-supply-actions { display: flex; gap: 4px; }
+.astronaut-supply-actions button { flex: 1; padding: 4px 2px; border: 1px solid #555; border-radius: 4px; color: #eee; font-size: 10px; cursor: pointer; }
+.astronaut-supply-actions button:hover { background: #ffffff20; }
+.astronaut-supply-actions button:disabled { opacity: .4; cursor: default; }
+.astronaut-suffocation { position: fixed; inset: 0; z-index: 15; background: radial-gradient(ellipse at center, #0009 15%, black 100%); pointer-events: none; animation: astronaut-suffocation 1.8s infinite ease-in-out; }
+.astronaut-death-screen { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; pointer-events: auto; background: radial-gradient(circle, #0f0505bb, #050000ed); backdrop-filter: blur(2px); }
+.astronaut-death-screen h2 { font-size: 2.2rem; letter-spacing: 3px; }
+.astronaut-death-screen p { color: #ddd; }
+.astronaut-death-screen button { cursor: pointer; padding: 10px 16px; border: 1px solid #aaa; border-radius: 6px; font-family: monospace; }
+@keyframes astronaut-vital-text { to { color: #ff3b30; } }
+@keyframes astronaut-vital-bar { to { background: #ff3b30; box-shadow: 0 0 8px #ff3b30dd; } }
+@keyframes astronaut-suffocation {
+  0%, 100% { opacity: var(--suffocation-min-opacity); backdrop-filter: blur(2px); }
+  50% { opacity: var(--suffocation-max-opacity); backdrop-filter: blur(var(--suffocation-blur)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .astronaut-hud .low-warning, .astronaut-hud .low-warning .vital-fill, .astronaut-suffocation { animation: none; }
+  .astronaut-hud .low-warning { color: #ff3b30; }
+  .astronaut-hud .low-warning .vital-fill { background: #ff3b30; }
+  .astronaut-suffocation { opacity: var(--suffocation-min-opacity); }
+}

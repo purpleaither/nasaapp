@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1a0804;
+  }
+}
+
+.font-mono-tech {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-panel {
+  background: rgba(22, 9, 5, 0.94);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.65);
+}
+
+/* Keep expanded controls reachable without a visible scrollbar over the scene. */
+.hud-sidebar { scrollbar-width: none; }
+.hud-sidebar::-webkit-scrollbar { display: none; }
